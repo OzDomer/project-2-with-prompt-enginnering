@@ -1,0 +1,87 @@
+.Switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.Switch-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.Switch-track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 60px;
+    height: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    font-family: var(--font-numeric);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+}
+
+.Switch-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: var(--border-strong);
+    transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    z-index: 2;
+}
+
+.Switch-on, .Switch-off {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-faint);
+    transition: color var(--transition), opacity var(--transition);
+}
+.Switch-on {
+    left: 8px;
+    opacity: 0;
+}
+.Switch-off {
+    right: 8px;
+    opacity: 1;
+}
+
+.Switch-input:checked + .Switch-track {
+    background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+    border-color: var(--accent);
+    box-shadow: inset 0 0 12px var(--accent-glow);
+}
+
+.Switch-input:checked + .Switch-track .Switch-thumb {
+    transform: translateX(34px);
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.Switch-input:checked + .Switch-track .Switch-on {
+    opacity: 1;
+    color: var(--accent);
+}
+.Switch-input:checked + .Switch-track .Switch-off {
+    opacity: 0;
+}
+
+.Switch-input:focus-visible + .Switch-track {
+    outline: 1px dashed var(--accent);
+    outline-offset: 3px;
+}
+
+.Switch-label {
+    font-family: var(--font-numeric);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}

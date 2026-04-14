@@ -1,0 +1,60 @@
+.Reports {
+    padding-bottom: 40px;
+}
+
+.Reports-empty {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.Reports-emptyBox {
+    max-width: 480px;
+    width: 100%;
+    padding: 36px 32px;
+    border: 1px dashed var(--border-strong);
+    background: var(--surface);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.Reports-emptyGlyph {
+    font-family: var(--font-display);
+    font-size: 48px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    opacity: 0.6;
+}
+
+.Reports-emptyTitle {
+    font-family: var(--font-numeric);
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    color: var(--text);
+}
+
+.Reports-emptyText {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.Reports-emptyCta {
+    margin-top: 10px;
+    padding: 10px 18px;
+    font-family: var(--font-numeric);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    transition: all var(--transition);
+}
+.Reports-emptyCta:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--accent-glow);
+}

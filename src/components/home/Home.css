@@ -1,0 +1,9 @@
+.Home {
+    padding: 0 0 40px;
+}
+
+.Home-loading {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}

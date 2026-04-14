@@ -1,0 +1,170 @@
+.Ai {
+    padding-bottom: 40px;
+}
+
+.Ai-key {
+    margin-top: 32px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.Ai-keyHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.Ai-keyTitle {
+    font-family: var(--font-numeric);
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+}
+
+.Ai-keyStatus {
+    font-family: var(--font-numeric);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+}
+.Ai-keyStatus--ok {
+    color: var(--accent);
+}
+.Ai-keyStatus--missing {
+    color: var(--warm);
+}
+
+.Ai-keyForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.Ai-keyHint {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.Ai-keyCode {
+    font-family: var(--font-numeric);
+    color: var(--accent);
+    padding: 1px 6px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.Ai-keyRow {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.Ai-keyPrompt {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: var(--font-numeric);
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-right: none;
+}
+
+.Ai-keyInput {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-numeric);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+.Ai-keyInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.Ai-toolbar {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    flex-wrap: wrap;
+}
+
+.Ai-toolbarLabel {
+    font-family: var(--font-numeric);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--text-dim);
+}
+
+.Ai-grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.Ai-empty {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px dashed var(--border-strong);
+}
+
+.Ai-emptyGlyph {
+    font-family: var(--font-display);
+    font-size: 72px;
+    color: var(--accent);
+    opacity: 0.5;
+    line-height: 1;
+}
+
+.Ai-emptyTitle {
+    font-family: var(--font-numeric);
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    color: var(--text);
+}
+
+.Ai-emptyText {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    max-width: 420px;
+}
+
+.Ai-emptyCta {
+    margin-top: 6px;
+    padding: 10px 18px;
+    font-family: var(--font-numeric);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    transition: all var(--transition);
+}
+.Ai-emptyCta:hover {
+    background: var(--accent);
+    color: var(--bg);
+}

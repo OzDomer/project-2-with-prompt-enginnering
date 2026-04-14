@@ -1,0 +1,255 @@
+.CoinCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 18px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    overflow: hidden;
+    animation: fade-up 400ms cubic-bezier(0.2, 0.9, 0.3, 1) backwards;
+}
+
+.CoinCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, var(--accent-glow) 200%);
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+}
+
+.CoinCard:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-dim);
+    box-shadow: var(--shadow-raised);
+    background: var(--surface-raised);
+}
+.CoinCard:hover::before {
+    opacity: 0.35;
+}
+
+.CoinCard--selected {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+    box-shadow: inset 0 0 30px -10px var(--accent-glow);
+}
+.CoinCard--selected::after {
+    content: "ACTIVE";
+    position: absolute;
+    top: 8px;
+    right: -28px;
+    transform: rotate(35deg);
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-numeric);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    padding: 2px 28px;
+    font-weight: 700;
+}
+
+.CoinCard-topRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-numeric);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+}
+
+.CoinCard-rank {
+    color: var(--text-faint);
+}
+
+.CoinCard-trend {
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+}
+.CoinCard-trend--up { color: var(--accent); }
+.CoinCard-trend--down { color: var(--danger); }
+
+.CoinCard-identity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.CoinCard-iconWrap {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    position: relative;
+}
+.CoinCard-iconWrap::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border: 1px dashed var(--border);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+.CoinCard:hover .CoinCard-iconWrap::after {
+    opacity: 1;
+}
+
+.CoinCard-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.CoinCard-iconFallback {
+    font-family: var(--font-display);
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.CoinCard-labels {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.CoinCard-symbol {
+    font-family: var(--font-numeric);
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.CoinCard-name {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.CoinCard-price {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px;
+    background: var(--bg);
+    border-left: 2px solid var(--accent);
+}
+
+.CoinCard-priceValue {
+    font-family: var(--font-numeric);
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+}
+
+.CoinCard[data-direction="down"] .CoinCard-price {
+    border-left-color: var(--danger);
+}
+.CoinCard[data-direction="down"] .CoinCard-priceValue {
+    color: var(--danger);
+}
+
+.CoinCard-priceLabel {
+    font-family: var(--font-numeric);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--text-faint);
+}
+
+.CoinCard-bars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+
+.CoinCard-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    background: var(--surface);
+    font-family: var(--font-numeric);
+}
+
+.CoinCard-barLabel {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-faint);
+}
+
+.CoinCard-barValue {
+    font-size: 12px;
+    color: var(--text);
+}
+
+.CoinCard-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+}
+
+.CoinCard-moreBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    font-family: var(--font-numeric);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--text-dim);
+    border: 1px solid transparent;
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.CoinCard-moreBtn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.CoinCard-moreBtnArrow {
+    transition: transform var(--transition);
+}
+.CoinCard-moreBtn:hover .CoinCard-moreBtnArrow {
+    transform: translateX(3px);
+}
+
+.CoinCard-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--accent);
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+}
+.CoinCard-corner--tl {
+    top: 4px;
+    left: 4px;
+    border-right: none;
+    border-bottom: none;
+}
+.CoinCard-corner--br {
+    bottom: 4px;
+    right: 4px;
+    border-left: none;
+    border-top: none;
+}
+.CoinCard:hover .CoinCard-corner,
+.CoinCard--selected .CoinCard-corner {
+    opacity: 1;
+}

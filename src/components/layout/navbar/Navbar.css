@@ -1,0 +1,215 @@
+.Navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 14px 24px;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px) saturate(140%);
+    border-bottom: 1px solid var(--border);
+}
+
+.Navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.Navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.Navbar-brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.Navbar-brandGlyph {
+    color: var(--accent);
+    font-size: 20px;
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+    animation: flicker 3s infinite;
+}
+
+.Navbar-brandText {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    color: var(--text);
+    text-shadow: 2px 2px 0 var(--accent-dim);
+}
+
+.Navbar-tagline {
+    font-family: var(--font-numeric);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-faint);
+}
+
+.Navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+}
+
+.Navbar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 14px;
+    font-family: var(--font-numeric);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--text-dim);
+    transition: color var(--transition), background var(--transition);
+    position: relative;
+}
+.Navbar-link:hover {
+    color: var(--text);
+    background: var(--surface-hover);
+}
+.Navbar-link.is-active {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.Navbar-link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 2px;
+    height: 1px;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.Navbar-linkBracket {
+    color: var(--text-faint);
+    transition: color var(--transition);
+}
+.Navbar-link.is-active .Navbar-linkBracket {
+    color: var(--accent);
+}
+
+.Navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.Navbar-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    min-width: 260px;
+}
+.Navbar-search:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.Navbar-searchPrompt {
+    color: var(--accent);
+    font-family: var(--font-numeric);
+    font-weight: 700;
+}
+
+.Navbar-searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--font-numeric);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--text);
+}
+.Navbar-searchInput::placeholder {
+    color: var(--text-faint);
+}
+
+.Navbar-searchCursor {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    background: var(--accent);
+    animation: blink 1s steps(2) infinite;
+}
+
+.Navbar-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-numeric);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+}
+.Navbar-chipDot {
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+    animation: flicker 2s infinite;
+}
+
+.Navbar-theme {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-strong);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    color: var(--text-dim);
+}
+.Navbar-theme:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+.Navbar-themeIcon {
+    font-size: 16px;
+    transition: transform var(--transition);
+}
+.Navbar-theme:hover .Navbar-themeIcon {
+    transform: rotate(20deg);
+}
+
+@media (max-width: 960px) {
+    .Navbar {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        row-gap: 12px;
+    }
+    .Navbar-links {
+        grid-column: 1 / -1;
+        order: 3;
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+    .Navbar-search {
+        min-width: 160px;
+    }
+    .Navbar-tagline {
+        display: none;
+    }
+}

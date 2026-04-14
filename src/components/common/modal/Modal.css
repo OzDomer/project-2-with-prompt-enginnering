@@ -1,0 +1,103 @@
+.Modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px) saturate(140%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 24px;
+    animation: fade-up 220ms ease-out;
+}
+
+.Modal {
+    position: relative;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    width: 100%;
+    max-height: 85vh;
+    overflow: auto;
+    box-shadow: var(--shadow-raised);
+    animation: fade-up 260ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.Modal--sm { max-width: 420px; }
+.Modal--md { max-width: 640px; }
+.Modal--lg { max-width: 920px; }
+
+.Modal-corners {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.Modal-corners span {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--accent);
+}
+.Modal-corners span:nth-child(1) {
+    top: -1px; left: -1px;
+    border-right: none;
+    border-bottom: none;
+}
+.Modal-corners span:nth-child(2) {
+    top: -1px; right: -1px;
+    border-left: none;
+    border-bottom: none;
+}
+.Modal-corners span:nth-child(3) {
+    bottom: -1px; left: -1px;
+    border-right: none;
+    border-top: none;
+}
+.Modal-corners span:nth-child(4) {
+    bottom: -1px; right: -1px;
+    border-left: none;
+    border-top: none;
+}
+
+.Modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+}
+
+.Modal-title {
+    font-family: var(--font-numeric);
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+.Modal-title::before {
+    content: "//";
+    margin-right: 10px;
+    color: var(--text-faint);
+}
+
+.Modal-close {
+    font-family: var(--font-body);
+    font-size: 24px;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    color: var(--text-dim);
+    transition: color var(--transition), background var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Modal-close:hover {
+    color: var(--accent);
+    background: var(--surface-hover);
+}
+
+.Modal-body {
+    padding: 24px;
+}

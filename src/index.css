@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Monoton&display=swap");
+
+:root {
+    --font-body: "IBM Plex Mono", ui-monospace, monospace;
+    --font-numeric: "Share Tech Mono", ui-monospace, monospace;
+    --font-display: "Monoton", "Share Tech Mono", monospace;
+
+    --radius: 2px;
+    --gutter: clamp(16px, 2vw, 32px);
+    --transition: 180ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+html[data-theme="dark"] {
+    --bg: #070a09;
+    --bg-grid: rgba(0, 255, 157, 0.035);
+    --surface: #0d1411;
+    --surface-raised: #111a16;
+    --surface-hover: #152019;
+    --border: #1d2a23;
+    --border-strong: #2a3d33;
+    --text: #d6ebe0;
+    --text-dim: #70897c;
+    --text-faint: #3d4c44;
+    --accent: #00ff9d;
+    --accent-dim: #00b86e;
+    --accent-glow: rgba(0, 255, 157, 0.45);
+    --warm: #ffb627;
+    --danger: #ff4d6d;
+    --cyan: #5df9ff;
+    --scan: rgba(0, 255, 157, 0.08);
+    --shadow-raised: 0 1px 0 rgba(0, 255, 157, 0.06), 0 14px 40px -18px rgba(0, 0, 0, 0.9);
+}
+
+html[data-theme="light"] {
+    --bg: #f3ead4;
+    --bg-grid: rgba(10, 10, 10, 0.04);
+    --surface: #fbf4df;
+    --surface-raised: #fffaed;
+    --surface-hover: #ece1c4;
+    --border: #c9b98f;
+    --border-strong: #8a7a51;
+    --text: #0b0e0c;
+    --text-dim: #5b5038;
+    --text-faint: #9e906a;
+    --accent: #b91c3d;
+    --accent-dim: #7d1127;
+    --accent-glow: rgba(185, 28, 61, 0.25);
+    --warm: #b45309;
+    --danger: #9f1239;
+    --cyan: #155e75;
+    --scan: rgba(139, 30, 63, 0.05);
+    --shadow-raised: 0 1px 0 rgba(0, 0, 0, 0.05), 0 14px 40px -18px rgba(60, 40, 10, 0.35);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+
+    background-image:
+        linear-gradient(var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px),
+        radial-gradient(ellipse 80% 50% at 20% 0%, var(--accent-glow), transparent 70%);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 3px,
+        var(--scan) 3px,
+        var(--scan) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    font-family: inherit;
+    color: inherit;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-dim);
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.92; }
+}
+
+@keyframes scan-sweep {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+    50% { box-shadow: 0 0 24px 2px var(--accent-glow); }
+}

@@ -1,0 +1,127 @@
+.MoreInfoModal-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.MoreInfoModal-error {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    font-family: var(--font-numeric);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+}
+.MoreInfoModal-errorTag {
+    background: var(--danger);
+    color: var(--bg);
+    padding: 2px 8px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+}
+
+.MoreInfoModal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.MoreInfoModal-identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.MoreInfoModal-icon {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--border-strong);
+    padding: 4px;
+    background: var(--bg);
+}
+
+.MoreInfoModal-identityText {
+    display: flex;
+    flex-direction: column;
+}
+
+.MoreInfoModal-symbol {
+    font-family: var(--font-numeric);
+    font-size: 20px;
+    letter-spacing: 0.15em;
+    color: var(--text);
+}
+
+.MoreInfoModal-name {
+    font-family: var(--font-numeric);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+}
+
+.MoreInfoModal-prices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+
+.MoreInfoModal-priceBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 16px;
+    background: var(--surface);
+    transition: background var(--transition);
+}
+.MoreInfoModal-priceBlock:hover {
+    background: var(--surface-hover);
+}
+
+.MoreInfoModal-priceBlock--accent {
+    background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+    border-left: 2px solid var(--accent);
+}
+
+.MoreInfoModal-priceLabel {
+    font-family: var(--font-numeric);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--text-faint);
+}
+
+.MoreInfoModal-priceValue {
+    font-family: var(--font-numeric);
+    font-size: 17px;
+    color: var(--text);
+    letter-spacing: 0.02em;
+}
+
+.MoreInfoModal-priceBlock--accent .MoreInfoModal-priceValue {
+    color: var(--accent);
+}
+
+.MoreInfoModal-footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-numeric);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+    .MoreInfoModal-prices {
+        grid-template-columns: 1fr;
+    }
+}
