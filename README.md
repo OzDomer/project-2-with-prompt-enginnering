@@ -24,7 +24,6 @@ npm run dev
 ```
 
 ## Screenshots
-<img width="2534" height="1240" alt="Screenshot 2026-04-15 151125" src="https://github.com/user-attachments/assets/5209d543-dcc0-44ad-82d5-0cc276996c9d" />
 <img width="2554" height="1268" alt="Screenshot 2026-04-15 231456" src="https://github.com/user-attachments/assets/e0f6e5ea-5b9b-4252-9b86-79f5ced9a1df" />
 <img width="2554" height="1265" alt="Screenshot 2026-04-15 231553" src="https://github.com/user-attachments/assets/b8ba861f-d50a-40af-865c-eeb5e638290c" />
 
