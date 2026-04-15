@@ -152,24 +152,57 @@
     letter-spacing: 0.05em;
 }
 
+.RecommendationCard-report {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.RecommendationCard-flavor,
 .RecommendationCard-explanation {
     position: relative;
-    padding-left: 18px;
+    padding: 12px 14px;
+    background: color-mix(in srgb, var(--surface) 50%, transparent);
+    border-left: 2px solid var(--border-strong);
 }
 
-.RecommendationCard-quote {
-    position: absolute;
-    left: 0;
-    top: -8px;
-    font-family: var(--font-display);
-    font-size: 32px;
-    color: var(--accent);
-    opacity: 0.5;
+.RecommendationCard-flavor {
+    border-left-color: var(--warm);
 }
 
+.RecommendationCard-explanation {
+    border-left-color: var(--accent);
+}
+
+.RecommendationCard--negative .RecommendationCard-explanation {
+    border-left-color: var(--danger);
+}
+
+.RecommendationCard-flavorTag,
+.RecommendationCard-explanationTag {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-family: var(--font-numeric);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--text-faint);
+}
+
+.RecommendationCard-flavorTag { color: var(--warm); }
+.RecommendationCard-explanationTag { color: var(--accent); }
+.RecommendationCard--negative .RecommendationCard-explanationTag { color: var(--danger); }
+
+.RecommendationCard-flavor p,
 .RecommendationCard-explanation p {
     margin: 0;
     color: var(--text);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.RecommendationCard-flavor p {
+    color: var(--text-dim);
+    font-style: italic;
 }
 
 .RecommendationCard-footer {

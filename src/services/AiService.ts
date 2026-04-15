@@ -1,7 +1,14 @@
 import axios from "axios"
-import type { AiPromptData, AiRecommendation } from "../models/AiRecommendation"
+import type { AiPromptData, AiRecommendation, AiVerdict } from "../models/AiRecommendation"
 
 const STORAGE_KEY = "cryptonite.openai_api_key"
+
+const SYSTEM_PROMPT =
+    `You are a cryptocurrency investment advisor. You will receive market data about a coin in the user message. Analyze the data and respond with a recommendation.
+Respond ONLY in raw JSON. No markdown, no code blocks, no backticks, no extra text. Just the JSON object.
+Use this exact format: {"verdict": "buy or don't buy", "explanation": "string", "flavor": "string"}
+explanation: 2-4 sentences analyzing the coin's price trends, volume, and market cap based on the provided data. Explain why you reached your verdict.
+flavor: 1-2 sentences about the coin itself — what it does, what makes it unique, or an interesting fact about it.`
 
 export class AiService {
     private readonly url = "https://api.openai.com/v1/chat/completions"
@@ -29,13 +36,7 @@ export class AiService {
             {
                 model: this.model,
                 messages: [
-                    {
-                        role: "system", content: 
-                        `You are a cryptocurrency investment advisor. You will receive market data about a coin in the user message. Analyze the data and respond with a recommendation.
-                        Respond ONLY in raw JSON. No markdown, no code blocks, no backticks, no extra text. Just the JSON object.
-                        Use this exact format: {"verdict": "buy or sell", "explanation": "string", "flavor": "string"}
-                        explanation: 2-4 sentences analyzing the coin's price trends, volume, and market cap based on the provided data. Explain why you reached your verdict.
-                        flavor: 1-2 sentences about the coin itself — what it does, what makes it unique, or an interesting fact about it.` },
+                    { role: "system", content: SYSTEM_PROMPT },
                     { role: "user", content: prompt }
                 ]
             },
@@ -53,10 +54,6 @@ export class AiService {
 
     private buildPrompt(d: AiPromptData): string {
         return [
-            "You are a disciplined crypto analyst. Based on the data below, should a retail investor buy this coin now?",
-            "Reply in strict JSON: {\"verdict\":\"buy\"|\"don't buy\",\"explanation\":\"...\"}.",
-            "The explanation must be 2-4 concise sentences grounded in the metrics.",
-            "",
             `Coin: ${d.name}`,
             `Current price (USD): ${d.current_price_usd}`,
             `Market cap (USD): ${d.market_cap_usd}`,
@@ -68,20 +65,16 @@ export class AiService {
     }
 
     private parseRecommendation(coinId: string, text: string): AiRecommendation {
-        const jsonMatch = text.match(/\{[\s\S]*\}/)
-        if (jsonMatch) {
-            try {
-                const parsed = JSON.parse(jsonMatch[0])
-                const verdict = String(parsed.verdict ?? "").toLowerCase().includes("don") ? "don't buy" : "buy"
-                const explanation = String(parsed.explanation ?? text)
-                return { coinId, verdict, explanation }
-            } catch {
-                // fall through
-            }
+        const parsed = JSON.parse(text)
+        const verdict: AiVerdict = String(parsed.verdict ?? "").toLowerCase().includes("don")
+            ? "don't buy"
+            : "buy"
+        return {
+            coinId,
+            verdict,
+            explanation: String(parsed.explanation ?? ""),
+            flavor: String(parsed.flavor ?? "")
         }
-        const lower = text.toLowerCase()
-        const verdict: "buy" | "don't buy" = lower.includes("don't buy") || lower.includes("do not buy") ? "don't buy" : "buy"
-        return { coinId, verdict, explanation: text.trim() || "No explanation returned." }
     }
 }
 

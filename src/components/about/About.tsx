@@ -20,8 +20,8 @@ export default function About() {
                         produce a buy / don't-buy verdict on demand.
                     </p>
                     <p>
-                        Data flows from CoinGecko and CryptoCompare on the market side and from an
-                        NVIDIA NIM endpoint on the oracle side. API keys never leave the browser — if
+                        Data flows from CoinGecko and CryptoCompare on the market side and from
+                        OpenAI's Chat Completions API (gpt-4o-mini) on the oracle side. API keys never leave the browser — if
                         you store one, it sits in <code>localStorage</code> under your own name, and
                         you can purge it at any moment from the Oracle page.
                     </p>

@@ -8,8 +8,11 @@ export interface AiPromptData {
     price_change_percentage_200d_in_currency: number
 }
 
+export type AiVerdict = "buy" | "don't buy"
+
 export interface AiRecommendation {
     coinId: string
-    verdict: "buy" | "don't buy"
+    verdict: AiVerdict
     explanation: string
+    flavor: string
 }

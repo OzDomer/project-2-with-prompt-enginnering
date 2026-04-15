@@ -53,9 +53,17 @@ export default function RecommendationCard({ coin, recommendation, loading, erro
                 )}
 
                 {recommendation && !loading && (
-                    <div className="RecommendationCard-explanation">
-                        <span className="RecommendationCard-quote">"</span>
-                        <p>{recommendation.explanation}</p>
+                    <div className="RecommendationCard-report">
+                        {recommendation.flavor && (
+                            <div className="RecommendationCard-flavor">
+                                <span className="RecommendationCard-flavorTag">FLAVOR</span>
+                                <p>{recommendation.flavor}</p>
+                            </div>
+                        )}
+                        <div className="RecommendationCard-explanation">
+                            <span className="RecommendationCard-explanationTag">ANALYSIS</span>
+                            <p>{recommendation.explanation}</p>
+                        </div>
                     </div>
                 )}
             </div>
