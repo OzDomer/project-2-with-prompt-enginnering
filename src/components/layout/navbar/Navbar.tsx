@@ -46,19 +46,18 @@ export default function Navbar({ search, onSearchChange, showSearch, theme, onTo
             </ul>
 
             <div className="Navbar-right">
-                {showSearch && (
-                    <div className="Navbar-search">
-                        <span className="Navbar-searchPrompt">$</span>
-                        <input
-                            value={search}
-                            onChange={e => onSearchChange(e.target.value)}
-                            placeholder="grep symbol|name"
-                            className="Navbar-searchInput"
-                            aria-label="Search coins"
-                        />
-                        <span className="Navbar-searchCursor" />
-                    </div>
-                )}
+                <div className={"Navbar-search" + (showSearch ? "" : " Navbar-search--hidden")} aria-hidden={!showSearch}>
+                    <span className="Navbar-searchPrompt">$</span>
+                    <input
+                        value={search}
+                        onChange={e => onSearchChange(e.target.value)}
+                        placeholder="grep symbol|name"
+                        className="Navbar-searchInput"
+                        aria-label="Search coins"
+                        tabIndex={showSearch ? 0 : -1}
+                    />
+                    <span className="Navbar-searchCursor" />
+                </div>
 
                 <div className="Navbar-chip" title="Selected coins">
                     <span className="Navbar-chipDot" />
